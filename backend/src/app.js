@@ -17,7 +17,7 @@ app.use(
     credentials: true,
   }),
 );
-const __dirname = path.resolve();
+const ROOT_DIR = path.resolve();
 
 const authRoute = require("./routes/authRoute");
 const messageRoute = require("./routes/messageRoute");
@@ -25,10 +25,10 @@ const messageRoute = require("./routes/messageRoute");
 app.use("/api/auth", authRoute);
 app.use("/api/messages", messageRoute);
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+  app.use(express.static(path.join(ROOT_DIR, "../frontend/dist")));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+    res.sendFile(path.join(ROOT_DIR, "../frontend", "dist", "index.html"));
   });
 }
 
