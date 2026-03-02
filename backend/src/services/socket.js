@@ -11,9 +11,9 @@ const io = new Server(server, {
   },
 });
 
-exports.getReceiverSocketId(userId) {
+exports.getReceiverSocketId = (userId) => {
   return userSocketMap[userId];
-}
+};
 
 // used to store online users
 const userSocketMap = {}; // {userId: socketId}
@@ -34,4 +34,4 @@ io.on("connection", (socket) => {
   });
 });
 
-module.exports =  { io, app, server };
+module.exports = { io, app, server };
